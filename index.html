@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biology Mock Exam - Test 04</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .question {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .question h3 {
+            margin-top: 0;
+            color: #0066cc;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .short-answer {
+            width: 100%;
+            height: 100px;
+            margin-top: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        #submit-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #submit-btn:hover {
+            background-color: #0052a3;
+        }
+        #results {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: red;
+            font-weight: bold;
+        }
+        .explanation {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #0066cc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Biology Mock Exam – Test 04</h1>
+    <form id="exam-form">
+        <!-- Multiple-Choice Questions -->
+        <div class="question" id="q1">
+            <h3>1. Which of the following is a location of lipid bilayers in eukaryotic cells?</h3>
+            <div class="options">
+                <input type="radio" name="q1" value="a"> a) Cytoplasm<br>
+                <input type="radio" name="q1" value="b"> b) Golgi apparatus<br>
+                <input type="radio" name="q1" value="c"> c) Ribosomes<br>
+                <input type="radio" name="q1" value="d"> d) Cell wall<br>
+            </div>
+        </div>
+
+        <div class="question" id="q2">
+            <h3>2. What is the primary function of the cell membrane as a barrier?</h3>
+            <div class="options">
+                <input type="radio" name="q2" value="a"> a) To synthesize carbohydrates<br>
+                <input type="radio" name="q2" value="b"> b) To regulate the movement of substances into and out of the cell<br>
+                <input type="radio" name="q2" value="c"> c) To store energy<br>
+                <input type="radio" name="q2" value="d"> d) To produce enzymes<br>
+            </div>
+        </div>
+
+        <div class="question" id="q3">
+            <h3>3. Which factor does NOT affect the rate of simple diffusion across a lipid bilayer?</h3>
+            <div class="options">
+                <input type="radio" name="q3" value="a"> a) Concentration gradient<br>
+                <input type="radio" name="q3" value="b"> b) Particle size<br>
+                <input type="radio" name="q3" value="c"> c) Polarity of the molecule<br>
+                <input type="radio" name="q3" value="d"> d) Number of ribosomes in the cell<br>
+            </div>
+        </div>
+
+        <div class="question" id="q4">
+            <h3>4. What is the role of aquaporins in osmosis?</h3>
+            <div class="options">
+                <input type="radio" name="q4" value="a"> a) To actively transport water against its gradient<br>
+                <input type="radio" name="q4" value="b"> b) To increase the rate of water diffusion across the membrane<br>
+                <input type="radio" name="q4" value="c"> c) To prevent water from entering the cell<br>
+                <input type="radio" name="q4" value="d"> d) To synthesize water molecules<br>
+            </div>
+        </div>
+
+        <div class="question" id="q5">
+            <h3>5. What is a key feature of channel proteins in facilitated diffusion?</h3>
+            <div class="options">
+                <input type="radio" name="q5" value="a"> a) They require ATP to function<br>
+                <input type="radio" name="q5" value="b"> b) They are specific to certain molecules or ions<br>
+                <input type="radio" name="q5" value="c"> c) They move molecules against their concentration gradient<br>
+                <input type="radio" name="q5" value="d"> d) They are embedded in the cytoplasm<br>
+            </div>
+        </div>
+
+        <!-- Short-Answer Questions -->
+        <div class="question" id="q11">
+            <h3>11. a) List three locations of lipid bilayers in cells. b) Explain why the cell membrane is described as selectively permeable. (6 marks)</h3>
+            <textarea class="short-answer" name="q11"></textarea>
+        </div>
+
+        <div class="question" id="q12">
+            <h3>12. a) Outline the impact of concentration gradient on the rate of diffusion across a lipid bilayer. b) Explain one example of simple diffusion of a molecule out of a cell. (6 marks)</h3>
+            <textarea class="short-answer" name="q12"></textarea>
+        </div>
+
+        <div class="question" id="q13">
+            <h3>13. a) Define osmosis and predict the direction of water movement in a cell placed in an isotonic solution. b) Outline how channels and pumps in the membrane allow for selective permeability. (8 marks)</h3>
+            <textarea class="short-answer" name="q13"></textarea>
+        </div>
+
+        <button type="submit" id="submit-btn">Submit Exam</button>
+    </form>
+
+    <div id="results" style="display: none;">
+        <h2>Your Results</h2>
+        <div id="results-content"></div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: 'b',
+            q2: 'b',
+            q3: 'd',
+            q4: 'b',
+            q5: 'b',
+            q11: `a) Locations: Cell membrane, mitochondrial membranes, lysosomal membranes. b) Explanation: The cell membrane is selectively permeable because it allows some substances (e.g., small, non-polar molecules like oxygen) to pass through easily via simple diffusion, while restricting others (e.g., large, polar molecules or ions) unless facilitated by specific proteins, thus controlling cellular homeostasis.`,
+            q12: `a) Impact: The rate of diffusion increases with a steeper concentration gradient because the difference in concentration provides a stronger driving force for molecules to move from high to low concentration, increasing collision frequency with the membrane. b) Example: Carbon dioxide diffuses out of cells during respiration. It moves from an area of high concentration inside the cell (produced during metabolism) to an area of low concentration in the blood or extracellular fluid, where it is transported away.`,
+            q13: `a) Definition: Osmosis is the passive movement of water molecules across a selectively permeable membrane from an area of high water concentration (low solute concentration) to an area of low water concentration (high solute concentration). Prediction: In an isotonic solution, the solute concentration is equal inside and outside the cell, so there is no net movement of water, and the cell remains stable. b) Channels and Pumps: Channels allow selective permeability by providing specific pathways for certain molecules or ions (e.g., potassium channels for K+ ions), while pumps use ATP to selectively transport specific molecules against their gradient (e.g., sodium-potassium pump for Na+ and K+), ensuring only desired substances cross the membrane.`
+        };
+
+        const explanations = {
+            q1: `Lipid bilayers form the membranes of organelles like the Golgi apparatus.`,
+            q2: `The primary function of the cell membrane is to regulate the movement of substances, maintaining homeostasis.`,
+            q3: `Ribosomes do not affect diffusion; concentration gradient, particle size, and polarity are key factors.`,
+            q4: `Aquaporins facilitate osmosis by providing channels for water, increasing the rate of diffusion.`,
+            q5: `Channel proteins are highly specific, allowing only certain substances to pass in facilitated diffusion.`,
+            q11: `Correct answer: a) Cell membrane, mitochondrial membranes, lysosomal membranes. b) The membrane is selectively permeable because it allows some substances to pass easily while restricting others, controlling homeostasis.`,
+            q12: `Correct answer: a) Steeper concentration gradients increase diffusion rate due to stronger driving force. b) Carbon dioxide diffuses out of cells from high concentration inside to low concentration outside during respiration.`,
+            q13: `Correct answer: a) Osmosis is passive water movement; in isotonic solution, no net water movement occurs. b) Channels provide specific pathways, and pumps use ATP for selective transport, ensuring only desired substances cross.`
+        };
+
+        document.getElementById('exam-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let score = 0;
+            let total = 0;
+            let resultsHTML = '';
+
+            // Check multiple-choice questions
+            for (let i = 1; i <= 5; i++) {
+                const question = `q${i}`;
+                const userAnswer = document.querySelector(`input[name="${question}"]:checked`);
+                const correctAnswer = correctAnswers[question];
+                total += 2;
+
+                if (userAnswer && userAnswer.value === correctAnswer) {
+                    score += 2;
+                    resultsHTML += `<p class="correct">Question ${i}: Correct!</p>`;
+                } else {
+                    resultsHTML += `<p class="incorrect">Question ${i}: Incorrect. Your answer: ${userAnswer ? userAnswer.value : 'Not answered'}. Correct answer: ${correctAnswer}</p>`;
+                    resultsHTML += `<div class="explanation">Explanation: ${explanations[question]}</div>`;
+                }
+            }
+
+            // Check short-answer questions
+            for (let i = 11; i <= 13; i++) {
+                const question = `q${i}`;
+                const userAnswer = document.querySelector(`textarea[name="${question}"]`).value.trim().toLowerCase();
+                const correctAnswer = correctAnswers[question].toLowerCase();
+                const marks = i === 13 ? 8 : 6;
+                total += marks;
+
+                // Simple keyword-based scoring for short answers
+                const keywords = correctAnswer.split(' ').filter(word => word.length > 3);
+                let matchedKeywords = 0;
+                keywords.forEach(keyword => {
+                    if (userAnswer.includes(keyword)) {
+                        matchedKeywords++;
+                    }
+                });
+                const scoreForQuestion = Math.round((matchedKeywords / keywords.length) * marks);
+
+                score += scoreForQuestion;
+                if (scoreForQuestion === marks) {
+                    resultsHTML += `<p class="correct">Question ${i}: Correct! (Score: ${scoreForQuestion}/${marks})</p>`;
+                } else {
+                    resultsHTML += `<p class="incorrect">Question ${i}: Partially correct or incorrect. Your answer: "${userAnswer}". Correct answer: "${correctAnswers[question]}" (Score: ${scoreForQuestion}/${marks})</p>`;
+                    resultsHTML += `<div class="explanation">Explanation: ${explanations[question]}</div>`;
+                }
+            }
+
+            // Display results
+            resultsHTML = `<p>Your total score: ${score}/${total} (${Math.round((score / total) * 100)}%)</p>` + resultsHTML;
+            document.getElementById('results-content').innerHTML = resultsHTML;
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('submit-btn').disabled = true;
+        });
+    </script>
+</body>
+</html>
